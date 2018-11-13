@@ -1,12 +1,12 @@
 {
-  "name": "rax-calendar",
+  "name": "rax-sign",
   "version": "0.6.5",
   "description": "Calendar component for Rax.",
   "license": "BSD-3-Clause",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alibaba/rax.git"
+    "url": "git+https://github.com/RaniHu/rax.git"
   },
   "keywords": [
     "Rax",
