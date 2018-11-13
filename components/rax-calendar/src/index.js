@@ -37,6 +37,7 @@ export default class Calendar extends Component {
     dateFormat: PropTypes.string,
     today: PropTypes.any,
     weekStart: PropTypes.number,
+    isPress:PropTypes.bool
   };
 
   static defaultProps = {
@@ -52,6 +53,7 @@ export default class Calendar extends Component {
     dateFormat: 'YYYY-MM-DD',
     today: moment(),
     weekStart: 1,
+    isPress:true
   };
 
   getMonthStack(currentMonth) {
@@ -72,9 +74,11 @@ export default class Calendar extends Component {
     return parsedDates;
   }
 
-  selectDate(date) {
-    this.setState({ selectedMoment: date });
-    this.props.onDateSelect && this.props.onDateSelect(date.format(this.props.dateFormat));
+  selectDate(date,isPress) {
+    if(isPress){
+      this.setState({ selectedMoment: date });
+      this.props.onDateSelect && this.props.onDateSelect(date.format(this.props.dateFormat));
+    }
   }
 
   onPrev = () => {
@@ -131,7 +135,7 @@ export default class Calendar extends Component {
             isWeekend={isoWeekday === 0 || isoWeekday === 6}
             key={`${renderIndex}`}
             onPress={() => {
-              this.selectDate(date);
+              this.selectDate(date,this.props.isPress);
             }}
             caption={`${dayIndex + 1}`}
             isToday={argMonthIsToday && dayIndex === todayIndex}
